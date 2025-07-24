@@ -1,0 +1,13 @@
+{
+  "itemGroup.vectorientation": "Example Mod Tab",
+  "block.vectorientation.example_block": "Example Block",
+  "item.vectorientation.example_item": "Example Item",
+
+  "vectorientation.configuration.title": "Vectorientation:ReNeoForge Configs",
+  "vectorientation.configuration.section.vectorientation.common.toml": "Vectorientation:ReNeoForge Configs",
+  "vectorientation.configuration.section.vectorientation.common.toml.title": "Vectorientation:ReNeoForge Configs",
+  "vectorientation.configuration.items": "Item List",
+  "vectorientation.configuration.logDirtBlock": "Log Dirt Block",
+  "vectorientation.configuration.magicNumberIntroduction": "Magic Number Text",
+  "vectorientation.configuration.magicNumber": "Magic Number"
+}
