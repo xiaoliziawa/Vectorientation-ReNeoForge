@@ -30,9 +30,6 @@ public abstract class InteractiveScrollableWidget extends AbstractScrollWidget {
         return this.scrollAmount();
     }
 
-    // Use the parent's renderWidget implementation which handles everything correctly
-
-
     @Override
     protected abstract int getInnerHeight();
     @Override
