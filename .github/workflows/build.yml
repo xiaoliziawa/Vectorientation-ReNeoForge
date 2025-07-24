@@ -2,11 +2,11 @@ name: Build and Release
 
 on:
   push:
-    branches: [ 1.20.1-dev ]
+    branches: [ main ]
     tags:
       - 'v*'
   pull_request:
-    branches: [ 1.20.1-dev ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -81,7 +81,6 @@ jobs:
       - name: Get version from tag
         id: get_version
         run: |
-          # 移除 refs/tags/ 前缀，如果有 v 前缀也移除
           VERSION="${GITHUB_REF#refs/tags/}"
           VERSION="${VERSION#v}"
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
@@ -91,29 +90,39 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
-          name: "EnchantmentLevelBreak v${{ steps.get_version.outputs.VERSION }}"
+          name: "Vectorientation v${{ steps.get_version.outputs.VERSION }}"
           body: |
-            ## EnchantmentLevelBreak v${{ steps.get_version.outputs.VERSION }}
+            ## Vectorientation v${{ steps.get_version.outputs.VERSION }}
 
             ### 📦 下载
-            - **Minecraft版本**: 1.20.1
-            - **Forge版本**: 47.1.3+
-            - **Java版本**: 17+
+            - **Minecraft版本**: 1.21.1
+            - **NeoForge版本**: 21.1.194+
+            - **Java版本**: 21+
 
             ### 🔧 安装方法
-            1. 确保已安装Minecraft 1.20.1和Forge 47.1.3+
+            1. 确保已安装Minecraft 1.21.1和NeoForge 21.1.194+
             2. 下载下方的JAR文件
             3. 将JAR文件放入`mods`文件夹
             4. 启动游戏
 
             ### ✨ 主要功能
-            - 突破附魔等级限制，最高可达2147483647级
-            - 提供`/cenchant`命令进行高等级附魔
-            - 可配置的附魔行为（原版叠加、完全叠加等）
-            - 支持任意附魔书应用到任意物品（可配置）
+            - **方块旋转效果**: 掉落方块会根据运动方向旋转和拉伸
+            - **活塞头动画**: 活塞伸缩时的Q弹效果
+            - **粘液块弹跳**: 玩家掉落到粘液块上时的视觉效果
+            - **TNT旋转**: TNT实体的动态旋转效果
+            - **矿车效果**: 矿车在空中时的旋转动画
+            - **可配置选项**: 支持开关各种效果和调整参数
+
+            ### ⚙️ 配置选项
+            - `squetch`: 启用/禁用拉伸效果
+            - `pistons`: 启用/禁用活塞效果
+            - `slime_blocks`: 启用/禁用粘液块弹跳效果
+            - `minecarts`: 启用/禁用矿车效果
+            - `min_warp` & `warp_factor`: 调整拉伸强度
+            - `blacklist`: 排除特定方块
 
             ### 📋 更新日志
-            请查看提交历史了解详细更改内容。
+            - 将Fabric版本port到NeoForge
           files: ./artifacts/*.jar
           draft: false
           prerelease: false
