@@ -4,11 +4,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.prizowo.vectorientation.main.config.SimpleConfig;
 
 import java.util.HashSet;
@@ -32,14 +30,12 @@ public class Vectorientation {
 	}
 	private static SimpleConfig CONFIG = SimpleConfig.of( "vectorientation" ).provider( Vectorientation::provider ).request();
 	public static ResourceLocation TNT_ID = ResourceLocation.fromNamespaceAndPath("minecraft", "tnt");
-
 	public static String VAR_SQUETCH = "squetch";
 	public static String VAR_MIN_WARP = "min_warp";
 	public static String VAR_WARP_FACTOR = "warp_factor";
 	public static String VAR_MINECARTS = "minecarts";
 	public static String VAR_PISTONS = "pistons";
 	public static String VAR_BLACKLIST = "blacklist";
-
 	public static boolean SQUETCH = CONFIG.getOrDefault(VAR_SQUETCH, true);
 	public static double MIN_WARP = CONFIG.getOrDefault(VAR_MIN_WARP, 0.75d);
 	public static double WARP_FACTOR = CONFIG.getOrDefault(VAR_WARP_FACTOR, 1.0d);
@@ -48,6 +44,7 @@ public class Vectorientation {
 	public static boolean MINECARTS =  CONFIG.getOrDefault(VAR_MINECARTS, false);
 	public static boolean PISTONS = CONFIG.getOrDefault(VAR_PISTONS, true);
 	public static boolean TNT = true;
+	
 	private static void parseBlacklist(){
 		BLACKLIST = new HashSet<>();
 		String[] entries = BLACKLIST_STRING.replace(" ","").split(",");
